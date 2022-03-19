@@ -9,10 +9,14 @@ const Header = () => {
   const { userId } = useContext(UserContext);
 
   useEffect(() => {
-    sdkClient.addContext({ userId: userId });
+    if (userId) {
+      sdkClient.addContext({ userId: userId });
+    }
   }, [sdkClient, userId]);
 
   const turquoiseHeader = sdkClient.evaluateFlag('Turquoise Header', false);
+  // console.log(sdkClient);
+  // console.log(turquoiseHeader);
   if (turquoiseHeader) {
     return (
       <HeaderBarB>
