@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 app.use("/api/test", require("./routes/api/test"));
 app.use("/api/url", require("./routes/api/url"));
 app.use("/r", require("./routes/receive_webhook"));
-app.get("/inspect/:url", require("./routes/inspect"));
+app.use("/inspect", require("./routes/inspect"));
 
 const PORT = process.env.PORT || 3001;
 

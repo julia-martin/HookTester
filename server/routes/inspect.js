@@ -9,7 +9,7 @@ const utils = require("../utils.js");
 // @access Public
 router.get("/:url", async (req, res) => {
   try {
-    const url = req.params.url
+    const url = req.params.url;
     const urlMongo = await utils.alreadyExist(url);
     if (!urlMongo) {
       res.status(404).send("URL doesn't exist");
