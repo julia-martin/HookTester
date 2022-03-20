@@ -15,8 +15,6 @@ const Header = () => {
   }, [sdkClient, userId]);
 
   const turquoiseHeader = sdkClient.evaluateFlag('Turquoise Header', false);
-  // console.log(sdkClient);
-  // console.log(turquoiseHeader);
   if (turquoiseHeader) {
     return (
       <HeaderBarB>
