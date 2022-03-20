@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 // Waypost SDK Config
 app.use(async (req, res, next) => {
   const Config = require("waypost-sdk-js-server");
-  const sdkClient = await new Config('12345', "http://localhost:5000").connect();
+  const sdkClient = await new Config('12345', "http://localhost:5050").connect();
   req.sdkClient = sdkClient;
   next();
 });
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 app.use("/api/test", require("./routes/api/test"));
 app.use("/api/url", require("./routes/api/url"));
 app.use("/r", require("./routes/receive_webhook"));
-app.get("/inspect/:url", require("./routes/inspect"));
+app.use("/inspect", require("./routes/inspect"));
 
 const PORT = process.env.PORT || 3001;
 
