@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 // Waypost SDK Config
 app.use(async (req, res, next) => {
   const Config = require("waypost-sdk-js-server");
-  const sdkClient = await new Config('12345', "http://localhost:5050").connect();
+  const sdkClient = await new Config('359c3d18-b92d-4183-98ed-b3d0a4f295f7', "http://localhost:5050").connect();
   req.sdkClient = sdkClient;
   next();
 });

@@ -14,7 +14,6 @@ const Hero = ({ handleClick }) => {
     setUserId(newUserId);
     localStorage.setItem("hooktester-userId", newUserId);
     sdkClient.addContext({ userId: newUserId });
-    console.log(sdkClient.context);
   };
 
   return (
