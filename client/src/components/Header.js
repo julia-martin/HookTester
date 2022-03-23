@@ -13,7 +13,6 @@ const Header = () => {
       sdkClient.addContext({ userId: userId });
     }
   }, [sdkClient, userId]);
-
   const turquoiseHeader = sdkClient.evaluateFlag('Turquoise Header', false);
   if (turquoiseHeader) {
     return (

@@ -1,33 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import { COLORS } from '../constants.js';
-import { WaypostContext } from 'waypost-sdk-react';
-import { UserContext } from '../App';
+import LoginForm from './LoginForm';
 
 const Hero = ({ handleClick }) => {
-  const { sdkClient } = useContext(WaypostContext);
-  const { setUserId } = useContext(UserContext);
-  const [ newUserId, setNewUserId ] = useState('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setUserId(newUserId);
-    localStorage.setItem("hooktester-userId", newUserId);
-    sdkClient.addContext({ userId: newUserId });
-  };
-
   return (
     <Wrapper>
       <TextArea>
         <h2>Easily test and inspect webhooks with our user-friendly interface</h2>
         <a href='/api/url'><Button onClick={handleClick}>Create URL</Button></a>
       </TextArea>
-      <LoginForm onSubmit={handleLogin}>
-        <h2>Log In</h2>
-        <label htmlFor="userid" >User ID</label>
-        <input id="userid" type="text" value={newUserId} onChange={e => setNewUserId(e.target.value)} />
-        <button type="submit">Submit</button>
-      </LoginForm>
+      <LoginForm />
     </Wrapper>
   );
 };
@@ -73,12 +56,4 @@ const Button = styled.button`
   }
 `;
 
-const LoginForm = styled.form`
-  background-color: ${COLORS.transparentPurple};
-  border-radius: 8px;
-  width: 50%;
-  padding: 50px;
-  margin: 10px auto;
-  text-align: center;
-`;
 export default Hero;

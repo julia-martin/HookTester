@@ -1,7 +1,11 @@
 require('dotenv').config();
 const express = require("express");
+const session = require('express-session');
+// const bodyParser = require('body-parser');
+// const path = require('path');
 const connectMongoDB = require("./config/mongodb.js");
 const cors = require("cors");
+const { loginController } = require('./routes/api/login');
 
 const app = express();
 
@@ -19,10 +23,19 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(session({
+    secret: 'waypostsecret',
+    name: 'uniqueSessionID',
+    saveUninitialized: false
+}));
+
 // Waypost SDK Config
 app.use(async (req, res, next) => {
   const Config = require("waypost-sdk-js-server");
-  const sdkClient = await new Config('359c3d18-b92d-4183-98ed-b3d0a4f295f7', "http://localhost:5050").connect();
+  const sdkClient = await new Config('67c9b0db-e839-4afb-96e2-390febd08dab', "http://localhost:5050").connect();
+  if (req.session.loggedIn) {
+    sdkClient.addContext({ userId: req.session.userId });
+  }
   req.sdkClient = sdkClient;
   next();
 });
@@ -36,6 +49,7 @@ app.use("/api/test", require("./routes/api/test"));
 app.use("/api/url", require("./routes/api/url"));
 app.use("/r", require("./routes/receive_webhook"));
 app.use("/inspect", require("./routes/inspect"));
+app.post("/login", loginController);
 
 const PORT = process.env.PORT || 3001;
 

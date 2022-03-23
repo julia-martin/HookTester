@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
+    "express-session": "^1.17.2",
     "mongoose": "^6.1.9",
     "pg": "^8.7.1",
     "waypost-sdk-js-server": "file:../../waypost-sdk-js-server/waypost-sdk-js-server-1.0.0.tgz"
