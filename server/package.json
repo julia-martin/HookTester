@@ -20,7 +20,7 @@
     "express-session": "^1.17.2",
     "mongoose": "^6.1.9",
     "pg": "^8.7.1",
-    "waypost-sdk-js-server": "file:../../waypost-sdk-js-server/waypost-sdk-js-server-1.0.0.tgz"
+    "waypost-sdk-js-server": "^1.0.1"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
