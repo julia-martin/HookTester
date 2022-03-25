@@ -6,7 +6,7 @@ import './App.css';
 import * as waypost from 'waypost-sdk-react';
 
 const { Config, WaypostProvider } = waypost;
-const config = new Config('67c9b0db-e839-4afb-96e2-390febd08dab', "http://localhost:5050");
+const config = new Config('8dd73e54-611a-4b21-8ea6-29ba1d70f2cd', "http://localhost:5050");
 
 export const UserContext = createContext();
 
